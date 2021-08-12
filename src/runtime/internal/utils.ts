@@ -73,7 +73,8 @@ export function subscribe(store, ...callbacks) {
 }
 
 export function get_store_value<T>(store: Readable<T>): T {
-	let value;
+	let value: T;
+	// Call the unsubsriber function right after getting the value
 	subscribe(store, _ => value = _)();
 	return value;
 }
